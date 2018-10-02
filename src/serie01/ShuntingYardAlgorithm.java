@@ -1,4 +1,4 @@
-package unifr.algo18;
+package serie01;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 

@@ -1,7 +1,7 @@
-package unifr.algo18.Tests;
+package serie01.Tests;
 
 import org.junit.Test;
-import unifr.algo18.Stack;
+import serie01.Stack;
 
 public class StackTest
 {

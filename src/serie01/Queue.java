@@ -1,6 +1,6 @@
-package unifr.algo18;
+package serie01;
 
-public class Stack<T>
+public class Queue<T>
 {
     private final static int MAX_SIZE = 1000;
     
@@ -8,21 +8,18 @@ public class Stack<T>
     private T[] data = (T[]) new Object[MAX_SIZE];
     private int size = 0;
     
-    public void Push(T element)
+    public void Enqueue(T element)
     {
         assert size != MAX_SIZE;
         data[size++] = element;
     }
     
-    public T Peek()
-    {
-        return data[size - 1];
-    }
-    
-    public T Pop()
+    public T Dequeue()
     {
         assert !IsEmpty();
-        return data[--size];
+        var value = data[0];
+        System.arraycopy(data, 1, data, 0, --size);
+        return value;
     }
     
     public boolean IsEmpty()

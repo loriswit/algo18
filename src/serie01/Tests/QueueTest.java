@@ -1,7 +1,7 @@
-package unifr.algo18.Tests;
+package serie01.Tests;
 
 import org.junit.Test;
-import unifr.algo18.Queue;
+import serie01.Queue;
 
 public class QueueTest
 {

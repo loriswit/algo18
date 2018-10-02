@@ -1,9 +1,9 @@
-package unifr.algo18.Tests;
+package serie01.Tests;
 
 import org.junit.Test;
-import unifr.algo18.Queue;
-import unifr.algo18.RpnEvaluationAlgorithm;
-import unifr.algo18.Token;
+import serie01.Queue;
+import serie01.Token;
+import serie01.RpnEvaluationAlgorithm;
 
 public class RpnEvaluationAlgorithmTest
 {

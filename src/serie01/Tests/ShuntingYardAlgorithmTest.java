@@ -1,11 +1,9 @@
-package unifr.algo18.Tests;
+package serie01.Tests;
 
 import org.junit.Test;
-import unifr.algo18.Queue;
-import unifr.algo18.ShuntingYardAlgorithm;
-import unifr.algo18.Token;
-
-import static org.junit.Assert.*;
+import serie01.Queue;
+import serie01.ShuntingYardAlgorithm;
+import serie01.Token;
 
 public class ShuntingYardAlgorithmTest {
 
