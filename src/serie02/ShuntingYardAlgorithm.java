@@ -2,11 +2,12 @@ package serie02;
 
 public class ShuntingYardAlgorithm implements IShuntingYardAlgorithm
 {
+    private Stack<Token> operators = new Stack<>();
+    
     @Override
     public Queue<Token> ConvertToRPN(Queue<Token> input)
     {
         var output = new Queue<Token>();
-        var operators = new Stack<Token>();
         
         while(!input.IsEmpty())
         {
@@ -23,23 +24,19 @@ public class ShuntingYardAlgorithm implements IShuntingYardAlgorithm
                 
                 case Operator:
                     if(!operators.IsEmpty())
-                        while((operators.Peek().type == Token.TokenType.Function ||
-                            (operators.Peek().type == Token.TokenType.Operator &&
-                                operators.Peek().GetOperatorPrecedence() >= token.GetOperatorPrecedence())) &&
-                            !(operators.Peek().type == Token.TokenType.Bracket &&
-                                operators.Peek().asBracket == Token.Bracket.Open))
+                        while((isFunction(operators.Peek()) || higherPrecedence(operators.Peek(), token)) &&
+                            !isOpenBracket(operators.Peek()))
                             output.Enqueue(operators.Pop());
                     
                     operators.Push(token);
                     break;
                 
                 case Bracket:
-                    if(token.asBracket == Token.Bracket.Open)
+                    if(isOpenBracket(token))
                         operators.Push(token);
                     else
                     {
-                        while(!(operators.Peek().type == Token.TokenType.Bracket &&
-                            operators.Peek().asBracket == Token.Bracket.Open))
+                        while(!isOpenBracket(operators.Peek()))
                             output.Enqueue(operators.Pop());
                         
                         operators.Pop();
@@ -52,5 +49,22 @@ public class ShuntingYardAlgorithm implements IShuntingYardAlgorithm
             output.Enqueue(operators.Pop());
         
         return output;
+    }
+    
+    private boolean isFunction(Token token)
+    {
+        return token.type == Token.TokenType.Function;
+    }
+    
+    private boolean higherPrecedence(Token a, Token b)
+    {
+        return a.type == Token.TokenType.Operator &&
+            a.GetOperatorPrecedence() >= b.GetOperatorPrecedence();
+    }
+    
+    private boolean isOpenBracket(Token token)
+    {
+        return token.type == Token.TokenType.Bracket &&
+            token.asBracket == Token.Bracket.Open;
     }
 }
