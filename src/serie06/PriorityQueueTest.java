@@ -1,4 +1,4 @@
-package serie06.PriorityQueue;
+package serie06;
 
 import java.util.Random;
 

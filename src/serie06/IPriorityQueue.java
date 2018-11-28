@@ -1,4 +1,4 @@
-package serie06.PriorityQueue;
+package serie06;
 
 public interface IPriorityQueue<T extends Comparable<T>>
 {

@@ -1,4 +1,4 @@
-package serie06.PriorityQueue;
+package serie06;
 
 import java.util.ArrayList;
 
@@ -23,6 +23,9 @@ public class Heap<T extends Comparable<T>> implements IPriorityQueue<T>
             
             swap(parent, index);
         }
+        
+        check(1);
+        System.out.println("alright");
     }
     
     // O(log(n))
@@ -46,6 +49,9 @@ public class Heap<T extends Comparable<T>> implements IPriorityQueue<T>
             
             swap(child, index);
         }
+    
+        check(0);
+        System.out.println("alright");
         
         return min;
     }
@@ -88,5 +94,22 @@ public class Heap<T extends Comparable<T>> implements IPriorityQueue<T>
     private int right(int index)
     {
         return (index + 1) * 2;
+    }
+    
+    ///
+    
+    void check(int i)
+    {
+        if(i * 2 < array.size())
+        {
+            assert lessThan(i - 1, i * 2 - 1);
+            check(i * 2);
+        }
+    
+        if(i * 2 + 1 < array.size())
+        {
+            assert lessThan(i - 1, i * 2);
+            check(i * 2 + 1);
+        }
     }
 }
